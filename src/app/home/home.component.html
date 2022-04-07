@@ -1,0 +1,16 @@
+<ion-content>
+  <ion-list>
+    <ion-list-header> Listagem de Horas Complementares </ion-list-header>
+
+    <ion-item *ngFor="let disciplina of disciplinas">
+      <ion-avatar slot="start">
+        <img src="../../assets/developer.png" />
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ disciplina.nome }}</h2>
+        <h3>10h</h3>
+        <p>Listen, I've had a pretty messed up day...</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

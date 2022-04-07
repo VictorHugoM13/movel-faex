@@ -1,0 +1,18 @@
+<ion-content>
+  <div class="center">
+    <ion-card>
+      <img src="assets/logo.png" alt="Logo">
+     
+      <ion-item lines="none" class="ion-text-center">
+        <ion-label position="floating">RA do Aluno</ion-label>
+        <ion-input type="number" [(ngModel)]="ra"></ion-input>
+      </ion-item>
+
+      <ion-item lines="none" class="ion-text-center">
+        <ion-label position="floating">Senha</ion-label>
+        <ion-input type="password" [(ngModel)]="senha"></ion-input>
+      </ion-item>
+      <ion-button expand="full" (click)="logar()">Logar</ion-button>
+    </ion-card>
+  </div>
+</ion-content>
