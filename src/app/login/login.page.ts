@@ -38,6 +38,7 @@ export class LoginPage implements OnInit {
       let flag = false;
       for (let i = 0; i < this.alunos.length; i++) {
         if (this.ra === this.alunos[i].ra) {
+          flag = true;
           if (this.senha === this.alunos[i].senha) {
             flag = true;
             this.router.navigate(['home']);
@@ -53,7 +54,15 @@ export class LoginPage implements OnInit {
              flag = true;
           }
         }
-
+        
+      }
+      if (flag === false) {
+        const alert = this.alertCtrl.create({
+          message: 'RA não encontrado!',
+          subHeader: 'Atenção',
+          buttons: ['Ok']
+         });
+         alert.then(alert => alert.present());
       }
     }
         
