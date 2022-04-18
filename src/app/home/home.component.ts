@@ -9,9 +9,9 @@ import { Disciplina } from './disciplina.model';
 export class HomeComponent implements OnInit {
 
   public disciplinas : Array<Disciplina> = [
-    new Disciplina('Análise e Desenvolvimento de Sistemas'),
-    new Disciplina('Banco de dados'),
-    new Disciplina('Engenharia de Software')
+    new Disciplina('Análise e Desenvolvimento de Sistemas', 30, 25),
+    new Disciplina('Banco de dados', 50, 30),
+    new Disciplina('Engenharia de Software', 40, 35),
   ]
 
   constructor() { }

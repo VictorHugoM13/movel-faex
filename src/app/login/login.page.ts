@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+
 import { Aluno } from '../Model/aluno.model';
 
 @Component({
@@ -26,6 +27,7 @@ export class LoginPage implements OnInit {
   }
 
   logar() {
+    
     if (this.ra === undefined || this.senha === undefined) {
       const alert = this.alertCtrl.create({
         message: 'Preencha todos os campos!',
@@ -54,7 +56,6 @@ export class LoginPage implements OnInit {
              flag = true;
           }
         }
-        
       }
       if (flag === false) {
         const alert = this.alertCtrl.create({
