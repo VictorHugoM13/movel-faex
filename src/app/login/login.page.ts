@@ -1,8 +1,10 @@
+import { Aluno } from './alunos.model';
+import { AlunosService } from './alunos.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 
-import { Aluno } from '../Model/aluno.model';
+
 
 @Component({
   selector: 'app-login', 
@@ -15,19 +17,15 @@ export class LoginPage implements OnInit {
   ra: number;
   senha: string;
 
-  constructor(public alertCtrl: AlertController, public router: Router) { }
+  constructor(public alertCtrl: AlertController, public router: Router, private AlunosService: AlunosService) { }
 
-  alunos: Array <Aluno> = [ 
-    { ra: 10735, nome: 'Victor', senha: '1234' },
-    { ra: 12243, nome: 'Lucas', senha: '4321' }
-  ]
+  public alunos: Array <Aluno>
 
   ngOnInit() {
-    
+    this.alunos = this.AlunosService.getAlunos();
   }
-
   logar() {
-    
+
     if (this.ra === undefined || this.senha === undefined) {
       const alert = this.alertCtrl.create({
         message: 'Preencha todos os campos!',
@@ -43,7 +41,7 @@ export class LoginPage implements OnInit {
           flag = true;
           if (this.senha === this.alunos[i].senha) {
             flag = true;
-            this.router.navigate(['home']);
+            this.router.navigate(['home/listagem']);
             
           }
           else {

@@ -1,8 +1,7 @@
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
 import { NgModule, Component } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { RegistrarHorasComponent } from './registrar-horas/registrar-horas.component';
+
 
 const routes: Routes = [
   {
@@ -17,14 +16,14 @@ const routes: Routes = [
   
   {
     path: 'home',
-    component: HomeComponent,
-    pathMatch: 'full'
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
-    path: 'registrar-horas',
-    component: RegistrarHorasComponent,
+    path: '',
+    redirectTo: 'home/listagem',
     pathMatch: 'full'
-  }
+  },
+
 ];
 
 @NgModule({
