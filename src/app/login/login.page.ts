@@ -41,7 +41,7 @@ export class LoginPage implements OnInit {
           flag = true;
           if (this.senha === this.alunos[i].senha) {
             flag = true;
-            this.router.navigate(['home/listagem']);
+            this.router.navigate(['home']);
             
           }
           else {
