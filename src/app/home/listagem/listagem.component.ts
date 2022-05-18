@@ -7,14 +7,19 @@ import { Disciplina } from '../disciplina.model';
   templateUrl: './listagem.component.html',
   styleUrls: ['./listagem.component.scss'],
 })
-export class ListagemComponent implements OnInit {
+export class ListagemComponent {
 
   public disciplinas: Array<Disciplina>
 
   constructor(private DisciplinaService: DisciplinaService) { }
 
-  ngOnInit() {
-    this.disciplinas = this.DisciplinaService.getDisciplina();
+  ionViewWillEnter() {
+    this.DisciplinaService.getDisciplinas().subscribe(
+      disciplinas => {
+        this.disciplinas = disciplinas
+      }
+    );
+    
   }
 
 }

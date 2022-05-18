@@ -1,10 +1,10 @@
 export class Aluno {
-    ra: number;
+    id: string;
     nome: string;
     senha: string;
 
-    constructor(ra: number, nome: string, senha: string) {
-        this.ra = ra;
+    constructor(id: string, nome: string, senha: string) {
+        this.id = id;
         this.nome = nome;
         this.senha = senha;
     }
