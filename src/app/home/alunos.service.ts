@@ -19,4 +19,9 @@ export class AlunosService {
   public getAlunos() : Observable<Aluno[]>{
     return this.HttpCLient.get<Aluno[]>(this.baseUrl+'/alunos');
   }
+  
+  public getAluno(id: string) : Observable<Aluno>{
+    const url = `${this.baseUrl}/alunos/${id}`;
+    return this.HttpCLient.get<Aluno>(url);
+  }
 }

@@ -1,3 +1,4 @@
+import { ListagemProfessorComponent } from './listagem-professor/listagem-professor.component';
 import { ListagemComponent } from './listagem/listagem.component';
 import { RegistrarHorasComponent } from './registrar-horas/registrar-horas.component';
 import { NgModule } from '@angular/core';
@@ -17,6 +18,6 @@ import { HomePage } from './home.page';
     IonicModule,
     HomePageRoutingModule
   ],
-  declarations: [HomePage, RegistrarHorasComponent, ListagemComponent]
+  declarations: [HomePage, RegistrarHorasComponent, ListagemComponent, ListagemProfessorComponent]
 })
 export class HomePageModule {}

@@ -12,15 +12,17 @@
 </ion-header>
 <ion-content>
   <ion-list>
-    <ion-list-header> Listagem das Minhas Horas</ion-list-header>
+    <ion-list-header> Listagem dos Alunos </ion-list-header>
 
     <ion-item *ngFor="let aluno of alunos">
       <ion-avatar slot="start">
         <img src="../../assets/developer.png" />
       </ion-avatar>
       <ion-label>
-        <h2>Curso: {{ aluno.nome }}</h2>
-        <h3>Horas Totais: {{ aluno.curso }}</h3>
+        <h2>Nome: {{ aluno.nome }}</h2>
+        <h2>Curso: {{ aluno.curso }}</h2>
+        <h2>Horas Completadas: {{ aluno.horasCompletadas }}</h2>
+        <h3>Horas Totais: {{ aluno.horasTotais }}</h3>
         
       </ion-label>
     </ion-item>

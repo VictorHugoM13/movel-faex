@@ -1,3 +1,4 @@
+import { ListagemProfessorComponent } from './listagem-professor/listagem-professor.component';
 
 import { ListagemComponent } from './listagem/listagem.component';
 import { NgModule } from '@angular/core';
@@ -7,13 +8,18 @@ import { RegistrarHorasComponent } from './registrar-horas/registrar-horas.compo
 const routes: Routes = [
   
   {
-    path: '',
+    path: 'listagem/:id',
     component: ListagemComponent
   },
   {
     path: 'registrar-horas',
     component: RegistrarHorasComponent
+  },
+  {
+    path: 'listagem-professor',
+    component: ListagemProfessorComponent
   }
+
 
 ];
 

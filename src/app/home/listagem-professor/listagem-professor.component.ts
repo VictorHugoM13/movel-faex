@@ -3,24 +3,22 @@ import { Aluno } from './../alunos.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './listagem.component.html',
-  styleUrls: ['./listagem.component.scss'],
+  selector: 'app-listagem-professor',
+  templateUrl: './listagem-professor.component.html',
+  styleUrls: ['./listagem-professor.component.scss'],
 })
 
-export class ListagemComponent {
-
-  public alunos: Aluno
-
+export class ListagemProfessorComponent {
+  
+  public alunos: Array<Aluno>
   constructor(private AlunosService: AlunosService) { }
 
-  ionViewWillEnter(id : string) {
-    this.AlunosService.getAluno(id).subscribe(
+  ionViewWillEnter() {
+    this.AlunosService.getAlunos().subscribe(
       alunos => {
         this.alunos = alunos
       }
     );
-    
   }
 
 }
