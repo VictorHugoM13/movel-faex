@@ -2,6 +2,7 @@ import { Observable } from 'rxjs';
 import { Aluno } from './alunos.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Storage } from '@ionic/storage-angular';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,23 @@ export class AlunosService {
     { ra: 12243, nome: 'Lucas', senha: '4321' }
   ]*/
 
-  constructor(private HttpCLient: HttpClient) { }
+  constructor(private HttpCLient: HttpClient, private storage : Storage) {
+    this.init();
+   }
+
+  private async init() {
+    this.storage = await this.storage.create();
+  }
+
+  public async getSession() {
+    return await this.storage.get('session').then((id : string) => {
+      return Promise.resolve(id);
+    });
+  }
+
+  public async setSession(id: string) {
+    this.storage.set('session', id);
+  }
 
   public getAlunos() : Observable<Aluno[]>{
     return this.HttpCLient.get<Aluno[]>(this.baseUrl+'/alunos');

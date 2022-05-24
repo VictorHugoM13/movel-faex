@@ -1,8 +1,10 @@
+import { AlunosService } from './../home/alunos.service';
 import { Usuario } from './usuario.model';
 import { UsuarioService } from './usuario.service';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+
 
 
 
@@ -17,22 +19,26 @@ export class LoginPage {
   id: string;
   senha: string;
 
-  constructor(public alertCtrl: AlertController, public router: Router, private UsuarioService: UsuarioService) { }
+  constructor(public alertCtrl: AlertController, public router: Router, private UsuarioService: UsuarioService, private route: ActivatedRoute, private alunosService : AlunosService) { }
 
   public usuarios: Array<Usuario>
+  
   
 
   ionViewWillEnter() {
     this.UsuarioService.getUsuarios().subscribe(
       usuarios => {
-        this.usuarios = usuarios
+        this.usuarios = usuarios;
+        this.id = this.route.snapshot.paramMap.get('id');
+        
       }
     )
   }
   logar() {
     this.UsuarioService.getUsuarios().subscribe(
       usuarios => {
-        this.usuarios = usuarios
+        this.usuarios = usuarios;
+        
         
         if (this.id === undefined || this.senha === undefined) {
           const alert = this.alertCtrl.create({
@@ -49,11 +55,16 @@ export class LoginPage {
               flag = true;
               if (this.senha === this.usuarios[i].senha && this.usuarios[i].tipo === 'aluno') {
                 flag = true;
-                this.router.navigate(['listagem/'+ this.id]);                
+                this.alunosService.setSession(this.id).then(
+                  () =>{
+                    this.router.navigate(['listagem']);
+                  }
+                );
+                                
               }      
               else if (this.senha === this.usuarios[i].senha && this.usuarios[i].tipo === 'professor') {
                 flag = true;
-                this.router.navigate(['listagem-professor']);                
+                this.router.navigate(['/listagem-professor']);             
               }        
               else {
                 const alert = this.alertCtrl.create({

@@ -8,7 +8,7 @@ import { RegistrarHorasComponent } from './registrar-horas/registrar-horas.compo
 const routes: Routes = [
   
   {
-    path: 'listagem/:id',
+    path: 'listagem',
     component: ListagemComponent
   },
   {

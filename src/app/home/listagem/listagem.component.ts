@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { AlunosService } from './../alunos.service';
 import { Aluno } from './../alunos.model';
 import { Component, OnInit } from '@angular/core';
@@ -10,16 +11,25 @@ import { Component, OnInit } from '@angular/core';
 
 export class ListagemComponent {
 
-  public alunos: Aluno
+  public aluno: Aluno;
+  public id: string;
 
-  constructor(private AlunosService: AlunosService) { }
-
-  ionViewWillEnter(id : string) {
-    this.AlunosService.getAluno(id).subscribe(
-      alunos => {
-        this.alunos = alunos
+  constructor(private AlunosService: AlunosService, private route: ActivatedRoute) {
+    
+  }
+  
+  ionViewWillEnter() {
+    this.AlunosService.getSession().then(
+      id => {
+        this.id = id;
+        this.AlunosService.getAluno(this.id).subscribe(
+          aluno => {
+            this.aluno = aluno;
+          }
+        );
       }
     );
+    
     
   }
 
