@@ -12,11 +12,16 @@
 </ion-header>
 <ion-content>
 <ion-list>
-  <ion-list-header>Registrar Horas</ion-list-header>
+  <ion-list-header>Registrar Horas - Adicionando Duas Horas</ion-list-header>
+  <ion-item>
+    <ion-label for="horasCompletadas" >Horas Completadas: </ion-label>
+    <ion-input type="text" id="horasCompletadas" name="horasCompletadas" [ngModel]="aluno?.horasCompletadas" required readonly>
+    </ion-input>
+  </ion-item> 
   <ion-item>
     <ion-label>Digite o Código:</ion-label>
-    <ion-input></ion-input>
-    <ion-button expand="full">Registrar</ion-button>
+    <ion-input type="text" [(ngModel)]="codToken"></ion-input>
+    <ion-button expand="full" id="onAdd" (click)="onSetHoras()">Registrar</ion-button>
   </ion-item>
 </ion-list>
 </ion-content>

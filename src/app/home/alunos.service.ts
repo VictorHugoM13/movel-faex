@@ -1,3 +1,4 @@
+import { Token } from './tokens.model';
 import { Observable } from 'rxjs';
 import { Aluno } from './alunos.model';
 import { HttpClient } from '@angular/common/http';
@@ -41,4 +42,16 @@ export class AlunosService {
     const url = `${this.baseUrl}/alunos/${id}`;
     return this.HttpCLient.get<Aluno>(url);
   }
+
+  public getToken(id : string) : Observable<Token>{
+    const url = `${this.baseUrl}/tokens/${id}`;
+    return this.HttpCLient.get<Token>(url);
+  }
+
+  public setAluno(id : string, aluno : Aluno) : Observable<Aluno>{
+    const url = `${this.baseUrl}/alunos/${id}`;
+    return this.HttpCLient.put<Aluno>(url, aluno);
+  }     
+
 }
+
