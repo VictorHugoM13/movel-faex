@@ -28,6 +28,7 @@ export class RegistrarHorasComponent {
           token => {
             this.token = token;
             console.log(token.token);
+            
           }
         )
         this.AlunosService.getAluno(this.id).subscribe(

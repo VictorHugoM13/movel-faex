@@ -1,0 +1,61 @@
+{
+  "alunos": [
+    {
+      "id": "10735",
+      "nome": "Victor Hugo da Silva",
+      "curso": "Analise e Desenvolvimento de Sistemas",
+      "horasCompletadas": 24,
+      "horasTotais": 40
+    },
+    {
+      "id": "12243",
+      "nome": "Lucas Fernando Silva",
+      "curso": "Engenharia de Software",
+      "horasCompletadas": 14,
+      "horasTotais": 50
+    }
+  ],
+  "usuario": [
+    {
+      "id": "10735",
+      "nome": "Victor Hugo da Silva",
+      "senha": "1234",
+      "tipo": "aluno"
+    },
+    {
+      "id": "12243",
+      "nome": "Lucas Fernando Silva",
+      "senha": "4321",
+      "tipo": "aluno"
+    },
+    {
+      "id": "joaoSilva",
+      "nome": "Joao Silva",
+      "senha": "1212",
+      "tipo": "professor"
+    },
+    {
+      "id": "rodrigoSilva",
+      "nome": "Rodrigo Silva",
+      "senha": "1313",
+      "tipo": "professor"
+    }
+  ],
+  "tokens": [
+    {
+      "token": "48455",
+      "timestamp": 1653432032,
+      "status": "valid",
+      "id": "10735"
+    },
+    {
+      "token": "90208",
+      "timestamp": 1653605494,
+      "status": "valid",
+      "id": "12243"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
