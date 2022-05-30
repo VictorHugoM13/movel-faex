@@ -41,19 +41,46 @@ export class RegistrarHorasComponent {
   }
 
   public onSetHoras(){
-    if (String(this.codToken) === String(this.token.token))  {
-      this.aluno.horasCompletadas += 2;
-      this.AlunosService.setAluno(this.id, this.aluno).subscribe(
-        () => {
-          const alert = this.alertCtrl.create({
-            message: 'Hora Computada!',
-            subHeader: 'Atenção',
-            buttons: ['Ok']
-           });
-           alert.then(alert => alert.present());
-        this.router.navigate(['listagem']);
+    if (this.token.status === 'invalid') {
+      const alert = this.alertCtrl.create({
+        message: 'Código ja usado, por favor, gerar outro código!',
+        subHeader: 'Atenção',
+        buttons: ['Ok']
+       });
+       alert.then(alert => alert.present());
+    }
+
+    else if (String(this.codToken) === String(this.token.token) && this.token.status === 'valid')  {
+      if ((this.aluno.horasCompletadas+1) > this.aluno.horasTotais) {
+        const alert = this.alertCtrl.create({
+          message: 'Você já completou todas as horas!',
+          subHeader: 'Atenção',
+          buttons: ['Ok']
+         });
+         alert.then(alert => alert.present());
       }
-      );
+      else {
+        this.aluno.horasCompletadas += 1;
+        this.AlunosService.setAluno(this.id, this.aluno).subscribe(
+          () => {
+            const alert = this.alertCtrl.create({
+              message: 'Hora Computada!',
+              subHeader: 'Atenção',
+              buttons: ['Ok']
+             });
+             alert.then(alert => alert.present());
+          this.router.navigate(['listagem']);
+        }
+        );
+        this.token.status = 'invalid';
+        this.AlunosService.setToken(this.id, this.token).subscribe(
+          () => {
+            console.log('Token atualizado');
+          }
+        );
+      }
+      
+      
     }
     else {
       const alert = this.alertCtrl.create({

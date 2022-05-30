@@ -48,6 +48,11 @@ export class AlunosService {
     return this.HttpCLient.get<Token>(url);
   }
 
+  public setToken(id : string, token : Token) : Observable<Token>{
+    const url = `${this.baseUrl}/tokens/${id}`;
+    return this.HttpCLient.put<Token>(url, token);
+  }
+
   public setAluno(id : string, aluno : Aluno) : Observable<Aluno>{
     const url = `${this.baseUrl}/alunos/${id}`;
     return this.HttpCLient.put<Aluno>(url, aluno);
