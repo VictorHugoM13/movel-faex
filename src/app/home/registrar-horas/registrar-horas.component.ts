@@ -17,6 +17,7 @@ export class RegistrarHorasComponent {
   public token : Token;
   public codToken : number;
   public horasCompletadas : number;
+
   
   constructor(private AlunosService: AlunosService, private route: ActivatedRoute, private router: Router, public alertCtrl: AlertController) { }
 
@@ -27,8 +28,7 @@ export class RegistrarHorasComponent {
         this.AlunosService.getToken(this.id).subscribe(
           token => {
             this.token = token;
-            console.log(token.token);
-            
+            console.log(token.token);           
           }
         )
         this.AlunosService.getAluno(this.id).subscribe(
@@ -50,8 +50,8 @@ export class RegistrarHorasComponent {
        alert.then(alert => alert.present());
     }
 
-    else if (String(this.codToken) === String(this.token.token) && this.token.status === 'valid')  {
-      if ((this.aluno.horasCompletadas+1) > this.aluno.horasTotais) {
+    else if (String(this.codToken) === String(this.token.token) && this.token.status === 'valid') {
+      if ((this.aluno.horasCompletadas+1) > this.aluno?.curso_obj?.horasTotais) {
         const alert = this.alertCtrl.create({
           message: 'Você já completou todas as horas!',
           subHeader: 'Atenção',
@@ -61,6 +61,7 @@ export class RegistrarHorasComponent {
       }
       else {
         this.aluno.horasCompletadas += 1;
+    
         this.AlunosService.setAluno(this.id, this.aluno).subscribe(
           () => {
             const alert = this.alertCtrl.create({
@@ -72,6 +73,7 @@ export class RegistrarHorasComponent {
           this.router.navigate(['listagem']);
         }
         );
+        
         this.token.status = 'invalid';
         this.AlunosService.setToken(this.id, this.token).subscribe(
           () => {
@@ -79,8 +81,12 @@ export class RegistrarHorasComponent {
           }
         );
       }
-      
-      
+      if (this.aluno.horasCompletadas === this.aluno?.curso_obj?.horasTotais) {
+        this.aluno.status = 'Completado';
+      }
+      else {
+        this.aluno.status = 'Em andamento';
+      }
     }
     else {
       const alert = this.alertCtrl.create({
@@ -89,7 +95,6 @@ export class RegistrarHorasComponent {
         buttons: ['Ok']
        });
        alert.then(alert => alert.present());
-    }
-   
+    } 
   }
 }

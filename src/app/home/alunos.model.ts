@@ -1,16 +1,20 @@
+import { Curso } from './curso.model';
 export class Aluno {
     id: string;
     nome: string;
+    curso_obj: Curso;
     curso: string;
     horasCompletadas: number;
-    horasTotais: number;
+    status: string;
+   
     
 
-    constructor(id: string, nome: string, curso: string, horasCompletadas: number, horasTotais: number) {
+    constructor(id: string, nome: string, curso: string, horasCompletadas: number, status: string) {
         this.id = id;
         this.nome = nome;
         this.curso = curso;
         this.horasCompletadas = horasCompletadas;
-        this.horasTotais = horasTotais;
+        this.status = status;
+        
     }
 }

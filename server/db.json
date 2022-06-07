@@ -3,15 +3,25 @@
     {
       "id": "10735",
       "nome": "Victor Hugo da Silva",
-      "curso": "Analise e Desenvolvimento de Sistemas",
-      "horasCompletadas": 40,
-      "horasTotais": 40
+      "curso": "1",
+      "horasCompletadas": 34
     },
     {
       "id": "12243",
       "nome": "Lucas Fernando Silva",
-      "curso": "Engenharia de Software",
-      "horasCompletadas": 14,
+      "curso": "2",
+      "horasCompletadas": 50
+    }
+  ],
+  "cursos": [
+    {
+      "id": "1",
+      "nome": "Analise e Desenvolvimento de Sistemas",
+      "horasTotais": 40
+    },
+    {
+      "id": "2",
+      "nome": "Engenharia de Software",
       "horasTotais": 50
     }
   ],
@@ -43,9 +53,9 @@
   ],
   "tokens": [
     {
-      "token": "14838",
-      "timestamp": 1653955046,
-      "status": "valid",
+      "token": "78273",
+      "timestamp": 1654645626,
+      "status": "invalid",
       "id": "10735"
     },
     {
