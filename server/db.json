@@ -4,13 +4,18 @@
       "id": "10735",
       "nome": "Victor Hugo da Silva",
       "curso": "1",
-      "horasCompletadas": 34
+      "horasCompletadas": 35
     },
     {
       "id": "12243",
       "nome": "Lucas Fernando Silva",
       "curso": "2",
-      "horasCompletadas": 50
+      "horasCompletadas": 50,
+      "curso_obj": {
+        "id": "2",
+        "nome": "Engenharia de Software",
+        "horasTotais": 50
+      }
     }
   ],
   "cursos": [
@@ -53,14 +58,14 @@
   ],
   "tokens": [
     {
-      "token": "78273",
-      "timestamp": 1654645626,
+      "token": "20835",
+      "timestamp": 1655156702,
       "status": "invalid",
       "id": "10735"
     },
     {
-      "token": "90208",
-      "timestamp": 1653605494,
+      "token": "97879",
+      "timestamp": 1655158460,
       "status": "valid",
       "id": "12243"
     }

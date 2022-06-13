@@ -1,3 +1,4 @@
+import { CursosService } from './../cursos.service';
 import { AlertController } from '@ionic/angular';
 import { Token } from './../tokens.model';
 import { Aluno } from './../alunos.model';
@@ -19,7 +20,7 @@ export class RegistrarHorasComponent {
   public horasCompletadas : number;
 
   
-  constructor(private AlunosService: AlunosService, private route: ActivatedRoute, private router: Router, public alertCtrl: AlertController) { }
+  constructor(private CursosService : CursosService, private AlunosService: AlunosService, private route: ActivatedRoute, private router: Router, public alertCtrl: AlertController) { }
 
   ionViewWillEnter() {
     this.AlunosService.getSession().then(
@@ -34,7 +35,13 @@ export class RegistrarHorasComponent {
         this.AlunosService.getAluno(this.id).subscribe(
           aluno => {
             this.aluno = aluno;
+            this.CursosService.getCurso(this.aluno.curso).subscribe(
+              curso => {
+                this.aluno.curso_obj = curso;
+              }
+            )
           }
+
         );
       }
     );
@@ -51,7 +58,7 @@ export class RegistrarHorasComponent {
     }
 
     else if (String(this.codToken) === String(this.token.token) && this.token.status === 'valid') {
-      if ((this.aluno.horasCompletadas+1) > this.aluno?.curso_obj?.horasTotais) {
+      if ((this.aluno?.horasCompletadas+1) > this.aluno?.curso_obj?.horasTotais) {
         const alert = this.alertCtrl.create({
           message: 'Você já completou todas as horas!',
           subHeader: 'Atenção',
@@ -80,12 +87,6 @@ export class RegistrarHorasComponent {
             console.log('Token atualizado');
           }
         );
-      }
-      if (this.aluno.horasCompletadas === this.aluno?.curso_obj?.horasTotais) {
-        this.aluno.status = 'Completado';
-      }
-      else {
-        this.aluno.status = 'Em andamento';
       }
     }
     else {

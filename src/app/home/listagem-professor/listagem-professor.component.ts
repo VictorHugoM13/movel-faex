@@ -27,9 +27,7 @@ export class ListagemProfessorComponent {
             }
           )
         }
-
       }     
     )
   };
-
 }
